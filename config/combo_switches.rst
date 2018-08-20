@@ -73,6 +73,29 @@ make sure this event is only posted if the player hits the flipper buttons
 within 500ms, then you can copy and add this section to your own machine
 config file and it will overwrite this default config.
 
+Here's an example if you want to cancel a show using flipper_cancel event:
+
+shows:
+  mode_intro:
+    - duration: 5
+      slides:
+        mode_intro_slide:
+          widgets:
+            - type: text
+              text: 3 Scoop hits lights Jackpot at ramp
+              color: white
+
+show_player:
+  start_mode_intro:
+    mode_intro:
+      loops: 0
+      events_when_stopped: start_mode_show_ended
+  flipper_cancel:
+    mode_intro:
+      action: stop
+      
+The show will last 5 seconds or if both flipper buttons pressed at same time show will end immediately.
+
 Combo Settings
 --------------
 
